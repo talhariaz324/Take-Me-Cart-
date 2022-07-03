@@ -5,6 +5,14 @@ export default function productList(props) {
   console.log(props);
   // Pure Function: Those functions which input and output never get change, so their output will also not get change so this is called the pure function. Similary, we cant change props values here
   return props.productList.map((product, index) => {
-    return <Product productS={product} key={index} />;
+    return (
+      <Product
+        productS={product}
+        key={index}
+        incrementQuantity={props.incrementQuantity}
+        index={index}
+        decrementQuantity={props.decrementQuantity}
+      />
+    );
   });
 }

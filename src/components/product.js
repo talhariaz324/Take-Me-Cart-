@@ -8,18 +8,31 @@ export default function product(props) {
         <div className="col-5">
           <h2>
             {props.productS.name}
-            <span class="badge bg-secondary ">₹{props.productS.price}</span>
+            <span className="badge bg-secondary ">₹{props.productS.price}</span>
           </h2>
         </div>
         <div className="col-3">
-          <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-secondary">
+          <div className="btn-group" role="group" aria-label="Basic example">
+            <button
+              type="button"
+              className="btn btn-secondary"
+              onClick={() => {
+                props.decrementQuantity(props.index);
+              }}
+            >
               -
             </button>
-            <button type="button" class="btn btn-secondary">
+            <button type="button" className="btn btn-secondary">
               {props.productS.quantity}
             </button>
-            <button type="button" class="btn btn-secondary">
+            {/* here we have to define function which will increment the quantity, but as we cant change the props so we have to define this function into the file where from we define our array or object */}
+            <button
+              type="button"
+              className="btn btn-secondary"
+              onClick={() => {
+                props.incrementQuantity(props.index);
+              }}
+            >
               +
             </button>
           </div>
