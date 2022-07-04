@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import NavBar from "./components/navbar";
 import React, { useState } from "react";
@@ -19,6 +18,7 @@ function App() {
   ];
   //  lets make state hook which is necessary for using setState or useState
   let [newProList, setNewProList] = useState(productList); // in small braces you have to pass the type, so here our type is list so we can pass it with [] this braces and then set them after using setNewProList method. but we default set it by giving name nand this is going to first variable which name is newProList and we can use it where we need productList
+
   let [totalAmt, setTotalAmt] = useState(0);
   const incrementQuantity = (index) => {
     let newProductList = [...newProList]; // as here we are passing array copy
@@ -49,6 +49,17 @@ function App() {
     setTotalAmt(0);
   };
 
+  const removePro = (index) => {
+    let newProductList = [...newProList];
+    let newTotalAmt = totalAmt;
+    // console.log(newProductList)
+    newTotalAmt -= newProductList[index].price * newProductList[index].quantity; // write before the splice because after it tries to call index of splice somehow.
+    newProductList.splice(index, 1); // second argument shows to remove how many arguments
+    // console.log(newProductList);
+    setNewProList(newProductList);
+    setTotalAmt(newTotalAmt);
+  };
+
   return (
     <React.Fragment>
       {/* using component */}
@@ -59,6 +70,7 @@ function App() {
         productList={newProList}
         incrementQuantity={incrementQuantity}
         decrementQuantity={decrementQuantity}
+        removePro={removePro}
       />
       <Footer totalAmt={totalAmt} resetQuantity={resetQuantity} />
     </React.Fragment>

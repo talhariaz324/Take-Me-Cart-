@@ -37,9 +37,17 @@ export default function product(props) {
             </button>
           </div>
         </div>
-        <div className="col-4">
+        <div className="col-2">
           {props.productS.quantity * props.productS.price}
         </div>
+        <button
+          className="col-2 btn btn-danger"
+          onClick={() => {
+            props.removePro(props.index);
+          }}
+        >
+          Remove Me
+        </button>
       </div>
     </div>
   );
