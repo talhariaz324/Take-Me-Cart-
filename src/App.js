@@ -3,6 +3,7 @@ import NavBar from "./components/navbar";
 import React, { useState } from "react";
 import ProductList from "./components/productList.js";
 import Footer from "./components/footer.js";
+import AddItem from "./components/addItem.js";
 function App() {
   const productList = [
     {
@@ -60,12 +61,23 @@ function App() {
     setTotalAmt(newTotalAmt);
   };
 
+  const addItem = (name, price) => {
+    let newProductList = [...newProList];
+    newProductList.push({
+      name: name,
+      price: price,
+      quantity: 0,
+    });
+    setNewProList(newProductList);
+  };
+
   return (
     <React.Fragment>
       {/* using component */}
       <NavBar />
       {/* for passing some argument to other component we use below: as here we are passing array of objects to productList */}
       {/* In JSX, we have to use the {} this braces for using javasctipt variables   */}
+      <AddItem addItem={addItem} />
       <ProductList
         productList={newProList}
         incrementQuantity={incrementQuantity}
