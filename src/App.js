@@ -90,3 +90,10 @@ function App() {
 }
 
 export default App;
+
+/*
+Hooks: Hooks are simply the concept which can be any function. In class based components, there was function which were difficult to handle. But in function based compononent it gives concept of hook which can be any function like useState, useEffect.
+State: Data store in it temporary. When it changes, virtual DOM compares with real DOM and show changes on screen via useState or useEffect.
+State is automatically handle by useState hook in function based compononet while in class based compononet we use state in constructor. 
+We have to use setState to show changes in both component.
+*/
